@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- primary meta tags -->
+    <title>weatherly</title>
+    <meta name="title" content="weatherly" />
+    <meta
+      name="description"
+      content="weatherly is a weather app made by yogskr" />
+    <!-- favicon and css -->
+    <link rel="shortcut icon" href="./favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- custom script -->
+    <script
+      src="https://kit.fontawesome.com/1ffc91e085.js"
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <header>
+      <div class="">
+        <img class="weatherly-logo" src="" alt="weatherly logo icon" />
+        <p class="logo-text">weatherly</p>
+      </div>
+      <nav>
+        <input class="search-bar" type="text" placeholder="Search a city..." />
+        <i class="fa-solid fa-magnifying-glass search-button"></i>
+      </nav>
+    </header>
+    <main class="weather-container">
+      <!-- current city -->
+      <div class="weather-overview">
+        <h1 class="location"><span class="country"></span></h1>
+        <p class="weather-desc"></p>
+        <img
+          class="weather-icon"
+          src="./assets/images/weather-icons/clear.svg"
+          alt="" />
+        <h2 class="temperature">29<span>&deg;C</span></h2>
+        <p class="temp-details">
+          Feels like <span class="temp-unit"></span>&deg;C
+        </p>
+      </div>
+      <!-- weather details -->
+      <div class="weather-details">
+        <div class="grid-container">
+          <div class="grid-1 image-container">
+            <img
+              class="grid-image wind-direction"
+              src="./assets/images/weather-details/wind-direction.svg"
+              alt="Wind direction icon" />
+            <div class="text-details">
+              <p class="text-mod">Wind direction</p>
+              <p class="data">NNW</p>
+            </div>
+          </div>
+          <div class="grid-2 image-container">
+            <img
+              class="grid-image humidity"
+              src="./assets/images/weather-details/humidity.svg"
+              alt="Humidity icon" />
+            <div class="text-details">
+              <p class="text-normal">Humidity</p>
+              <p class="data">92 <span class="unit">%</span></p>
+            </div>
+          </div>
+          <div class="grid-3 image-container">
+            <img
+              class="grid-image wind-speed"
+              src="./assets/images/weather-details/barometer.svg"
+              alt="Wind speed icon" />
+            <div class="text-details">
+              <p class="text-mod">Wind speed</p>
+              <p class="data">5.15 <span class="unit">m/s</span></p>
+            </div>
+          </div>
+          <div class="grid-4 image-container">
+            <img
+              class="grid-image pressure"
+              src="./assets/images/weather-details/pressure.svg"
+              alt="Pressure icon" />
+            <div class="text-details">
+              <p class="text-normal">Pressure</p>
+              <p class="data">89 <span class="unit">hPa</span></p>
+            </div>
+          </div>
+          <div class="grid-5 image-container">
+            <img
+              class="grid-image sunrise"
+              src="./assets/images/weather-details/sunrise.svg"
+              alt="Sunrise icon" />
+            <div class="text-details">
+              <p class="text-normal">Sunrise</p>
+              <p class="data">8:35</p>
+            </div>
+          </div>
+          <div class="grid-6 image-container">
+            <img
+              class="grid-image sunset"
+              src="./assets/images/weather-details/sunset.svg"
+              alt="Sunset icon" />
+            <div class="text-details">
+              <p class="text-normal">Sunset</p>
+              <p class="data">18:35</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="info">
+            <p class="time">Friday 26, 12:53</p>
+            <figure>
+              <a
+                title="GitHub"
+                href="https://github.com/yogskr"
+                target="_blank">
+                <img
+                  class="github"
+                  src="./assets/images/brand-icons/github.svg"
+                  alt="GitHub logo" />
+              </a>
+              <a
+                title="Threads"
+                href="https://threads.net/@yogskr"
+                target="_blank">
+                <img
+                  class="threads"
+                  src="./assets/images/brand-icons/threads.svg"
+                  alt="Threads logo" />
+              </a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="status">
+      <span id="status"></span>
+    </div>
+  </body>
+  <!-- script -->
+  <script src="./assets/js/app.js"></script>
+</html>
