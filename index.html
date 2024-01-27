@@ -40,9 +40,15 @@
         <p class="weather-desc"></p>
         <img class="weather-icon" src="" alt="Weather icon" />
         <h2 class="temperature"><span class="temp-unit"></span></h2>
-        <p class="temp-details">
-          Feels like <span class="temp-details-unit"></span>
-        </p>
+        <div class="feels-like">
+          <img
+            class="feels-like-icon"
+            src="./assets/images/misc-icons/thermometer.svg"
+            alt="Feels like icon" />
+          <p class="temp-details">
+            Feels like <span class="temp-details-unit"></span>
+          </p>
+        </div>
       </div>
       <!-- weather details -->
       <div class="weather-details">
@@ -50,11 +56,11 @@
           <div class="grid-1 image-container">
             <img
               class="grid-image wind-direction"
-              src="./assets/images/weather-details/wind-direction.svg"
+              src="./assets/images/weather-details/compass.svg"
               alt="Wind direction icon" />
             <div class="text-details">
               <p class="text-mod">Wind direction</p>
-              <p class="data">NNW</p>
+              <p class="data wind-direction-text"></p>
             </div>
           </div>
           <div class="grid-2 image-container">
@@ -64,27 +70,33 @@
               alt="Humidity icon" />
             <div class="text-details">
               <p class="text-normal">Humidity</p>
-              <p class="data">92 <span class="unit">%</span></p>
+              <p class="data humidity-text">
+                <span class="unit humidity-unit"></span>
+              </p>
             </div>
           </div>
           <div class="grid-3 image-container">
             <img
               class="grid-image wind-speed"
-              src="./assets/images/weather-details/barometer.svg"
+              src="./assets/images/weather-details/windsock.svg"
               alt="Wind speed icon" />
             <div class="text-details">
               <p class="text-mod">Wind speed</p>
-              <p class="data">5.15 <span class="unit">m/s</span></p>
+              <p class="data wind-speed-text">
+                <span class="unit wind-speed-unit"></span>
+              </p>
             </div>
           </div>
           <div class="grid-4 image-container">
             <img
               class="grid-image pressure"
-              src="./assets/images/weather-details/pressure.svg"
+              src="./assets/images/weather-details/barometer.svg"
               alt="Pressure icon" />
             <div class="text-details">
               <p class="text-normal">Pressure</p>
-              <p class="data">89 <span class="unit">hPa</span></p>
+              <p class="data pressure-text">
+                <span class="unit pressure-unit"></span>
+              </p>
             </div>
           </div>
           <div class="grid-5 image-container">
