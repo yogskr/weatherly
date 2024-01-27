@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
-  --main-background: #cdeef3;
-  --secondary-background: rgba(46, 175, 204, 0.5);
-  --accent-background: rgba(255, 255, 255, 0.8);
-  --main-font-color: rgb(45, 50, 55);
+  --main-background: rgba(227, 253, 253, 1);
+  --secondary-background: rgba(113, 201, 206, 0.6);
+  --item-background: rgba(203, 241, 245, 0.5);
+  --accent-background: rgba(229, 241, 243, 0.8);
+  --main-font-color: rgb(65, 67, 69);
   --secondary-font-color: rgb(81, 90, 97);
   --main-font: 'Varela Round';
   --main-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
@@ -36,9 +37,20 @@ body {
 }
 
 /* Header Styling */
-.logo {
-  width: 15rem;
-  height: auto;
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.weatherly-logo {
+  width: 5rem;
+  position: relative;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #113127;
 }
 
 header {
@@ -77,10 +89,15 @@ nav {
   font-weight: 700;
 }
 
+.search-bar:hover,
 .search-bar:focus {
   box-shadow: var(--nav-box-shadow);
   transform: translate(-5px, 3px);
   transition: all 100ms 10ms linear;
+}
+
+.search-bar:hover {
+  cursor: text;
 }
 
 .search-button {
@@ -93,6 +110,7 @@ nav {
 }
 
 .search-button:hover {
+  cursor: pointer;
   box-shadow: var(--nav-box-shadow);
   transform: translate(-5px, 3px);
   transition: all 100ms 10ms linear;
@@ -133,6 +151,7 @@ nav {
   font-weight: 700;
   color: var(--main-font-color);
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .weather-desc {
@@ -142,15 +161,15 @@ nav {
 }
 
 .temperature {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
   color: var(--main-font-color);
   margin-bottom: 10px;
 }
 
 .temp-details {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--main-font-color);
 }
 
@@ -209,7 +228,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(172, 227, 235, 0.3);
+  background-color: var(--item-background);
   border-radius: 25px;
   padding: 10px 15px;
 }
@@ -247,7 +266,7 @@ nav {
 }
 
 .info {
-  background-color: rgba(172, 227, 235, 0.3);
+  background-color: var(--item-background);
   border-radius: 25px;
   padding: 12px 25px;
   display: flex;
