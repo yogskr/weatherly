@@ -19,12 +19,17 @@
   </head>
   <body>
     <header>
-      <div class="">
+      <!-- <p class="warning-1 msg">Invalid input, try again!</p>
+      <p class="warning-2 msg">City or country not found</p> -->
+      <div class="logo-container">
         <img class="weatherly-logo" src="" alt="weatherly logo icon" />
         <p class="logo-text">weatherly</p>
       </div>
       <nav>
-        <input class="search-bar" type="text" placeholder="Search a city..." />
+        <input
+          class="search-bar"
+          type="text"
+          placeholder="Search a city or country..." />
         <i class="fa-solid fa-magnifying-glass search-button"></i>
       </nav>
     </header>
@@ -33,13 +38,10 @@
       <div class="weather-overview">
         <h1 class="location"><span class="country"></span></h1>
         <p class="weather-desc"></p>
-        <img
-          class="weather-icon"
-          src="./assets/images/weather-icons/clear.svg"
-          alt="" />
-        <h2 class="temperature">29<span>&deg;C</span></h2>
+        <img class="weather-icon" src="" alt="Weather icon" />
+        <h2 class="temperature"><span class="temp-unit"></span></h2>
         <p class="temp-details">
-          Feels like <span class="temp-unit"></span>&deg;C
+          Feels like <span class="temp-details-unit"></span>
         </p>
       </div>
       <!-- weather details -->
@@ -92,7 +94,7 @@
               alt="Sunrise icon" />
             <div class="text-details">
               <p class="text-normal">Sunrise</p>
-              <p class="data">8:35</p>
+              <p class="data sunrise-text"></p>
             </div>
           </div>
           <div class="grid-6 image-container">
@@ -102,7 +104,7 @@
               alt="Sunset icon" />
             <div class="text-details">
               <p class="text-normal">Sunset</p>
-              <p class="data">18:35</p>
+              <p class="data sunset-time"></p>
             </div>
           </div>
         </div>
