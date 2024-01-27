@@ -1,28 +1,63 @@
 // Logo DOM Element
 const logo = document.querySelector('.weatherly-logo');
 
+// -------------------------------------------------
+
 // Navigation DOM Elements
 const cityInput = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-button');
 
+// -------------------------------------------------
+
 // Weather Overview DOM Elements
+
+// City and Country
 const weatherLocation = document.querySelector('.location');
 const weatherCountry = document.querySelector('.country');
+
+// Weather Description
 const weatherDesc = document.querySelector('.weather-desc');
+
+// Weather Icon
 const weatherIcon = document.querySelector('.weather-icon');
+
+// Temperature
 const temperature = document.querySelector('.temperature');
 const tempUnit = document.querySelector('.temp-unit');
 const tempDetails = document.querySelector('.temp-details');
 const tempDetailsUnit = document.querySelector('.temp-details-unit');
 
+// -------------------------------------------------
+
 // Weather Details DOM Eelements
+
+// Wind Direction
+const windDirection = document.querySelector('.wind-direction-text');
+
+// Humidity
+const humidity = document.querySelector('.humidity-text');
+const humidityUnit = document.querySelector('.humidity-unit');
+
+// Wind Speed
+const windSpeed = document.querySelector('.wind-speed-text');
+const windSpeedUnit = document.querySelector('.wind-speed-unit');
+
+// Pressure
+const pressure = document.querySelector('.pressure-text');
+const pressureUnit = document.querySelector('.pressure-unit');
+
+// Sunrise & Sunset
 const sunriseTime = document.querySelector('.sunrise-text');
 const sunsetTime = document.querySelector('.sunset-time');
+
+// -------------------------------------------------
 
 // Open Weather API
 const apiKey = 'a6efd444d5287faaebffb105784f5590';
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=`;
 const apiIcon = 'https://openweathermap.org/img/wn/';
+
+// -------------------------------------------------
 
 // Get Current Weather
 async function checkWeather(city) {
@@ -73,16 +108,55 @@ async function checkWeather(city) {
   }
 
   // Show weather temperature in celcius
-  temperature.textContent = Math.round(data.main.temp);
-  tempUnit.textContent = '°C';
-  temperature.appendChild(tempUnit);
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
 
   // Show weather details 'Feels like...'
-  tempDetails.textContent = `Feels like ${Math.round(data.main.feels_like)}`;
-  tempDetailsUnit.textContent = '°C';
-  tempDetails.appendChild(tempDetailsUnit);
+  const feelsLike = (tempDetailsUnit.textContent = Math.round(
+    data.main.feels_like
+  ));
+  tempDetails.textContent = `Feels like ${feelsLike}°C`;
+
+  // TODO: Change icon when the temperature more than or lower than 15 °C
 
   // Show wind direction
+  let compassSector = [
+    'N',
+    'NNE',
+    'NE',
+    'ENE',
+    'E',
+    'ESE',
+    'SE',
+    'SSE',
+    'S',
+    'SSW',
+    'SW',
+    'WSW',
+    'W',
+    'WNW',
+    'NW',
+    'NNW',
+    'N',
+  ];
+
+  windDirection.textContent = compassSector[(data.wind.deg / 22.5).toFixed(0)];
+
+  // Show humidity
+  humidity.textContent = data.main.humidity;
+  humidityUnit.textContent = ' %';
+  humidity.appendChild(humidityUnit);
+
+  // Show wind speed
+  windSpeed.textContent = data.wind.speed;
+  windSpeedUnit.textContent = ' m/s';
+  windSpeed.appendChild(windSpeedUnit);
+
+  // Show pressure
+  pressure.textContent = data.main.pressure;
+  pressureUnit.textContent = ' hPa';
+  pressure.appendChild(pressureUnit);
+
+  //TODO: Change icon when the pressure is lower or higher than 1013hPa
 
   // Show sunrise and sunset
   const { sunrise } = data.sys;
@@ -107,14 +181,18 @@ async function checkWeather(city) {
     hour12: true,
   });
 
-  sunriseTime.textContent = `${formattedSunrise}`;
-  sunsetTime.textContent = `${formattedSunset}`;
+  sunriseTime.textContent = formattedSunrise;
+  sunsetTime.textContent = formattedSunset;
 }
 
-// Get current weather
+// -------------------------------------------------
+
+// Default weather on page load
 window.addEventListener('load', () => {
   checkWeather('Yogyakarta');
 });
+
+// -------------------------------------------------
 
 // Search a city name
 searchBtn.addEventListener('click', () => {
