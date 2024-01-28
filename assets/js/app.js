@@ -1,3 +1,5 @@
+import iconResources from './icon-resources.js';
+
 // Logo DOM Element
 const logo = document.querySelector('.weatherly-logo');
 
@@ -98,25 +100,49 @@ async function checkWeather(city, latitude, longitude) {
     let apiIcon = `https://openweathermap.org/img/wn/${weatherImage}@2x.png`;
 
     if (weatherCondition == 'Thunderstorm') {
-      weatherIcon.src = 'assets/images/weather-icons/thunderstorms-extreme.svg';
+      weatherIcon.src = iconResources.thunderstorm;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Drizzle') {
-      weatherIcon.src = 'assets/images/weather-icons/drizzle.svg';
+      weatherIcon.src = iconResources.drizzle;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Rain') {
-      weatherIcon.src = 'assets/images/weather-icons/rain.svg';
+      weatherIcon.src = iconResources.rain;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Snow') {
-      weatherIcon.src = 'assets/images/weather-icons/snow.svg';
+      weatherIcon.src = iconResources.snow;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Mist') {
-      weatherIcon.src = 'assets/images/weather-icons/mist.svg';
+      weatherIcon.src = iconResources.mist;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Smoke') {
+      weatherIcon.src = iconResources.smoke;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Haze') {
+      weatherIcon.src = iconResources.haze;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Dust') {
+      weatherIcon.src = iconResources.dust;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Fog') {
+      weatherIcon.src = iconResources.fog;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Sand') {
+      weatherIcon.src = iconResources.sand;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Ash') {
+      weatherIcon.src = iconResources.ash;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Squalls') {
+      weatherIcon.src = iconResources.squalls;
+      logo.src = apiIcon;
+    } else if (weatherCondition == 'Tornado') {
+      weatherIcon.src = iconResources.tornado;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Clear') {
-      weatherIcon.src = 'assets/images/weather-icons/clear.svg';
+      weatherIcon.src = iconResources.clear;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Clouds') {
-      weatherIcon.src = 'assets/images/weather-icons/clouds.svg';
+      weatherIcon.src = iconResources.clouds;
       logo.src = apiIcon;
     } else {
       throw new Error('Weather not found!');
@@ -140,7 +166,7 @@ async function checkWeather(city, latitude, longitude) {
     } else if (feelsLikeTemp > realTemp) {
       feelsLikeIcon.src = 'assets/images/misc-icons/thermometer-warmer.svg';
     } else {
-      feelsLikeIcon.src = 'initial';
+      feelsLikeIcon.src = 'assets/images/misc-icons/thermometer.svg';
     }
 
     // Show wind direction
@@ -224,7 +250,7 @@ async function checkWeather(city, latitude, longitude) {
 
     getTime.textContent = longFormatDate;
   } catch (error) {
-    console.error(error);
+    console.error('Cannot fetch the weather because:', error);
   }
   complete();
 }
