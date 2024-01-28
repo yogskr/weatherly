@@ -2,30 +2,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  /* Background & Font Colors */
-  --nav-background: rgba(255, 185, 0, 0.6);
-  --weather-overview-background: rgba(20, 184, 166, 0.6);
-  --weather-details-background: rgba(26, 175, 208, 0.6);
-  --footer-background: rgba(246, 74, 102, 0.6);
-  --main-background: rgba(227, 253, 253, 1);
-  --item-background: rgba(208, 239, 246, 0.3);
+  /* Background Colors */
   --accent-background: rgba(229, 241, 243, 0.8);
-  --button-background: rgba(12, 199, 137, 0.7);
+  --footer-background: rgba(246, 74, 102, 0.6);
+  --item-background: rgba(208, 239, 246, 0.3);
+  --location-button-background: rgba(160, 95, 234, 0.7);
+  --main-background: rgba(227, 253, 253, 1);
+  --nav-background: rgba(255, 185, 0, 0.6);
   --search-bar-background: rgba(207, 246, 233, 0.7);
+  --search-button-background: rgba(12, 199, 137, 0.7);
+  --weather-details-background: rgba(26, 175, 208, 0.6);
+  --weather-overview-background: rgba(20, 184, 166, 0.6);
+
+  /* Font Colors */
   --main-font-color: rgb(30, 31, 32);
   --secondary-font-color: rgb(81, 90, 97);
 
   /* Custom Fonts */
-  --main-font: 'Varela Round';
   --logo-font: 'Montserrat Alternates';
+  --main-font: 'Varela Round';
 
   /* Box Shadows */
-  --main-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
-  --item-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.5);
   --active-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
+  --item-box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.5);
+  --main-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
 
   /* Transition */
-  --active-transition: all 200ms ease-in-out 100ms;
+  --active-transition: all 200ms ease-in-out 50ms;
+
+  /* Transform */
+  --item-transform-hover: translate(-5px, 3px);
+  --item-transform-active: translate(0, 0);
 
   /* Border Radius */
   --main-border-radius: 20px;
@@ -79,6 +86,7 @@ header {
   justify-content: space-between;
   background-color: var(--nav-background);
   padding: 10px 30px;
+  height: 4.7rem;
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
 }
@@ -112,7 +120,7 @@ nav {
 .search-bar:hover,
 .search-bar:focus {
   box-shadow: var(--item-box-shadow);
-  transform: translate(-5px, 3px);
+  transform: var(--item-transform-hover);
   transition: var(--active-transition);
 }
 
@@ -120,25 +128,34 @@ nav {
   cursor: text;
 }
 
-.search-button {
+.search-button,
+.location-button {
   font-size: 1.1rem;
   font-weight: 900;
-  background-color: var(--button-background);
   color: var(--main-font-color);
   padding: 12px 20px;
   border-radius: 20px;
 }
 
-.search-button:hover {
+.search-button {
+  background-color: var(--search-button-background);
+}
+
+.location-button {
+  background-color: var(--location-button-background);
+}
+
+.search-button:hover,
+.location-button:hover {
   cursor: pointer;
   box-shadow: var(--item-box-shadow);
-  transform: translate(-5px, 3px);
+  transform: var(--item-transform-hover);
   transition: var(--active-transition);
 }
 
 .search-button:active {
   box-shadow: var(--active-box-shadow);
-  transform: translate(0, 0);
+  transform: var(--item-transform-active);
 }
 
 /* Weather Interface Styling */
@@ -153,7 +170,8 @@ nav {
 /* Current City Weather Styling */
 .weather-overview {
   background-color: var(--weather-overview-background);
-  padding: 30px 20px;
+  height: 100%;
+  padding: 0 20px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -196,15 +214,17 @@ nav {
 }
 
 .feels-like-icon {
-  width: 5.5rem;
+  width: 5rem;
+  position: relative;
+  right: 0.5rem;
 }
 
 .temp-details {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--main-font-color);
   position: relative;
-  right: 1.6rem;
+  right: 1rem;
 }
 
 /* Weather Details Styling */
@@ -264,15 +284,16 @@ nav {
   justify-content: center;
   background-color: var(--item-background);
   border-radius: var(--main-border-radius);
-  padding: 10px 15px 20px 15px;
+  padding: 10px 0 20px 0;
   box-shadow: var(--item-box-shadow);
-  transform: translate(-5px, 3px);
+  transform: var(--item-transform-hover);
   transition: var(--active-transition);
+  height: 11.5rem;
 }
 
 .image-container:hover {
   box-shadow: var(--active-box-shadow);
-  transform: translate(0, 0);
+  transform: var(--item-transform-active);
   transition: var(--active-transition);
 }
 
@@ -303,36 +324,60 @@ nav {
 }
 
 .info {
-  background-color: var(--item-background);
-  border-radius: var(--main-border-radius);
-  padding: 12px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.info:hover {
-  box-shadow: var(--item-box-shadow);
-  transform: translate(-5px, 3px);
-  transition: var(--active-transition);
 }
 
 .time {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--main-font-color);
+  background-color: var(--item-background);
+  border-radius: var(--main-border-radius);
+  padding: 12px 25px;
 }
 
-figure {
+.time:hover {
+  box-shadow: var(--item-box-shadow);
+  transform: var(--item-transform-hover);
+  transition: var(--active-transition);
+}
+
+.social {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 1.1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
 }
 
 .github,
 .threads {
   width: 23px;
+  background-color: var(--item-background);
+  border-radius: var(--main-border-radius);
+  padding: 12px;
+}
+
+.github:hover,
+.threads:hover {
+  transform: var(--item-transform-hover);
+  transition: var(--active-transition);
+  box-shadow: var(--item-box-shadow);
+}
+
+/* Loading Dot Styling */
+.loading-dot {
+  width: 4.5rem;
+}
+
+.loading-dot-text {
+  width: 2rem;
 }
 
 /* Media Queries */
