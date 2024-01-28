@@ -22,7 +22,7 @@
       <!-- <p class="warning-1 msg">Invalid input, try again!</p>
       <p class="warning-2 msg">City or country not found</p> -->
       <div class="logo-container">
-        <img class="weatherly-logo" src="" alt="weatherly logo icon" />
+        <img class="weatherly-logo" src="./assets/images/logo.png" />
         <p class="logo-text">weatherly</p>
       </div>
       <nav>
@@ -31,22 +31,26 @@
           type="text"
           placeholder="Search a city or country..." />
         <i class="fa-solid fa-magnifying-glass search-button"></i>
+        <i class="fa-solid fa-location-crosshairs location-button"></i>
       </nav>
     </header>
     <main class="weather-container">
       <!-- current city -->
       <div class="weather-overview">
-        <h1 class="location"><span class="country"></span></h1>
-        <p class="weather-desc"></p>
-        <img class="weather-icon" src="" alt="Weather icon" />
-        <h2 class="temperature"><span class="temp-unit"></span></h2>
+        <h1 class="location">City<span class="country"></span></h1>
+        <p class="weather-desc">weather</p>
+        <img class="weather-icon" src="" />
+        <img
+          class="loading-dot"
+          src="./assets/images/misc-icons/loading-dot.svg" />
+        <h2 class="temperature">NaN<span class="temp-unit"></span></h2>
         <div class="feels-like">
           <img
             class="feels-like-icon"
             src="./assets/images/misc-icons/thermometer.svg"
             alt="Feels like icon" />
           <p class="temp-details">
-            Feels like <span class="temp-details-unit"></span>
+            Feels like <span class="temp-details-unit">NaN</span>
           </p>
         </div>
       </div>
@@ -56,11 +60,14 @@
           <div class="grid-1 image-container">
             <img
               class="grid-image wind-direction"
-              src="./assets/images/weather-details/compass.svg"
+              src="./assets/images/weather-details/windsock.svg"
               alt="Wind direction icon" />
             <div class="text-details">
               <p class="text-mod">Wind direction</p>
               <p class="data wind-direction-text"></p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
           <div class="grid-2 image-container">
@@ -73,18 +80,24 @@
               <p class="data humidity-text">
                 <span class="unit humidity-unit"></span>
               </p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
           <div class="grid-3 image-container">
             <img
               class="grid-image wind-speed"
-              src="./assets/images/weather-details/windsock.svg"
+              src="./assets/images/weather-details/wind.svg"
               alt="Wind speed icon" />
             <div class="text-details">
               <p class="text-mod">Wind speed</p>
               <p class="data wind-speed-text">
                 <span class="unit wind-speed-unit"></span>
               </p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
           <div class="grid-4 image-container">
@@ -97,6 +110,9 @@
               <p class="data pressure-text">
                 <span class="unit pressure-unit"></span>
               </p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
           <div class="grid-5 image-container">
@@ -107,6 +123,9 @@
             <div class="text-details">
               <p class="text-normal">Sunrise</p>
               <p class="data sunrise-text"></p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
           <div class="grid-6 image-container">
@@ -116,15 +135,19 @@
               alt="Sunset icon" />
             <div class="text-details">
               <p class="text-normal">Sunset</p>
-              <p class="data sunset-time"></p>
+              <p class="data sunset-text"></p>
+              <img
+                class="loading-dot-text"
+                src="./assets/images/misc-icons/loading-dot.svg" />
             </div>
           </div>
         </div>
         <div class="footer">
           <div class="info">
-            <p class="time">Friday 26, 12:53</p>
-            <figure>
+            <p class="time"></p>
+            <div class="social">
               <a
+                class="social-link"
                 title="GitHub"
                 href="https://github.com/yogskr"
                 target="_blank">
@@ -134,6 +157,7 @@
                   alt="GitHub logo" />
               </a>
               <a
+                class="social-link"
                 title="Threads"
                 href="https://threads.net/@yogskr"
                 target="_blank">
@@ -142,7 +166,7 @@
                   src="./assets/images/brand-icons/threads.svg"
                   alt="Threads logo" />
               </a>
-            </figure>
+            </div>
           </div>
         </div>
       </div>
