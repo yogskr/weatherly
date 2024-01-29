@@ -196,6 +196,7 @@ nav {
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--main-font-color);
+  text-align: center;
 }
 
 .temperature {
