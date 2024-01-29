@@ -1,65 +1,80 @@
-import iconResources from './icon-resources.js';
+'use strict';
+
+// Import weather icons from icon-resources.js module
+import resources from './icon-resources.js';
+
+// -------------------------------------------------
+
+// DOM querySelector
+function querySelector(elm) {
+  return document.querySelector(elm);
+}
+
+// -------------------------------------------------
 
 // Logo DOM Element
-const logo = document.querySelector('.weatherly-logo');
+const logo = querySelector('.weatherly-logo');
 
 // -------------------------------------------------
 
 // Navigation DOM Elements
-const cityInput = document.querySelector('.search-bar');
-const searchBtn = document.querySelector('.search-button');
-const locationBtn = document.querySelector('.location-button');
+const cityInput = querySelector('.search-bar');
+const searchBtn = querySelector('.search-button');
+const locationBtn = querySelector('.location-button');
 
 // -------------------------------------------------
 
 // Weather Overview DOM Elements
 
 // City and Country
-const weatherLocation = document.querySelector('.location');
-const weatherCountry = document.querySelector('.country');
+const weatherLocation = querySelector('.location');
+const weatherCountry = querySelector('.country');
 
 // Weather Description
-const weatherDesc = document.querySelector('.weather-desc');
+const weatherDesc = querySelector('.weather-desc');
 
 // Weather Icon
-const weatherIcon = document.querySelector('.weather-icon');
+const weatherIcon = querySelector('.weather-icon');
 
 // Temperature
-const temperature = document.querySelector('.temperature');
-const tempUnit = document.querySelector('.temp-unit');
-const tempDetails = document.querySelector('.temp-details');
-const tempDetailsUnit = document.querySelector('.temp-details-unit');
+const temperature = querySelector('.temperature');
+const tempDetails = querySelector('.temp-details');
 
 // Feels Like Temp Icon
-const feelsLikeIcon = document.querySelector('.feels-like-icon');
+const feelsLikeIcon = querySelector('.feels-like-icon');
 
 // -------------------------------------------------
 
 // Weather Details DOM Eelements
 
 // Wind Direction
-const windDirection = document.querySelector('.wind-direction-text');
+const windDirection = querySelector('.wind-direction-text');
 
 // Humidity
-const humidity = document.querySelector('.humidity-text');
-const humidityUnit = document.querySelector('.humidity-unit');
+const humidityTxt = querySelector('.humidity-text');
+const humidityDesc = querySelector('.humidity-desc');
+const humidityUnit = querySelector('.humidity-unit');
 
 // Wind Speed
-const windSpeed = document.querySelector('.wind-speed-text');
-const windSpeedUnit = document.querySelector('.wind-speed-unit');
+const windSpeedTxt = querySelector('.wind-speed-text');
+const windSpeedDesc = querySelector('.wind-speed-desc');
+const windSpeedUnit = querySelector('.wind-speed-unit');
+const windSpeedImg = querySelector('.wind-speed');
 
 // Pressure
-const pressure = document.querySelector('.pressure-text');
-const pressureUnit = document.querySelector('.pressure-unit');
+const pressureTxt = querySelector('.pressure-text');
+const pressureDesc = querySelector('.pressure-desc');
+const pressureUnit = querySelector('.pressure-unit');
+const pressureImg = querySelector('.pressure');
 
 // Sunrise & Sunset
-const sunriseTime = document.querySelector('.sunrise-text');
-const sunsetTime = document.querySelector('.sunset-text');
+const sunriseTime = querySelector('.sunrise-text');
+const sunsetTime = querySelector('.sunset-text');
 
 // -------------------------------------------------
 
 // Footer DOM Elements
-const getTime = document.querySelector('.time');
+const getTime = querySelector('.time');
 
 // Open Weather API
 const apiKey = 'a6efd444d5287faaebffb105784f5590';
@@ -67,7 +82,7 @@ const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 const apiIcon = 'https://openweathermap.org/img/wn/';
 
 // Loader DOM Element
-const loader = document.querySelector('.loading-dot');
+const loader = querySelector('.loading-dot');
 const loaderTxt = document.querySelectorAll('.loading-dot-text');
 
 // -------------------------------------------------
@@ -100,115 +115,172 @@ async function checkWeather(city, latitude, longitude) {
     let apiIcon = `https://openweathermap.org/img/wn/${weatherImage}@2x.png`;
 
     if (weatherCondition == 'Thunderstorm') {
-      weatherIcon.src = iconResources.thunderstorm;
+      weatherIcon.src = resources.weatherIconCont.thunderstorm;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Drizzle') {
-      weatherIcon.src = iconResources.drizzle;
+      weatherIcon.src = resources.weatherIconCont.drizzle;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Rain') {
-      weatherIcon.src = iconResources.rain;
+      weatherIcon.src = resources.weatherIconCont.rain;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Snow') {
-      weatherIcon.src = iconResources.snow;
+      weatherIcon.src = resources.weatherIconCont.snow;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Mist') {
-      weatherIcon.src = iconResources.mist;
+      weatherIcon.src = resources.weatherIconCont.mist;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Smoke') {
-      weatherIcon.src = iconResources.smoke;
+      weatherIcon.src = resources.weatherIconCont.smoke;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Haze') {
-      weatherIcon.src = iconResources.haze;
+      weatherIcon.src = resources.weatherIconCont.haze;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Dust') {
-      weatherIcon.src = iconResources.dust;
+      weatherIcon.src = resources.weatherIconCont.dust;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Fog') {
-      weatherIcon.src = iconResources.fog;
+      weatherIcon.src = resources.weatherIconCont.fog;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Sand') {
-      weatherIcon.src = iconResources.sand;
+      weatherIcon.src = resources.weatherIconCont.sand;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Ash') {
-      weatherIcon.src = iconResources.ash;
+      weatherIcon.src = resources.weatherIconCont.ash;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Squalls') {
-      weatherIcon.src = iconResources.squalls;
+      weatherIcon.src = resources.weatherIconCont.squalls;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Tornado') {
-      weatherIcon.src = iconResources.tornado;
+      weatherIcon.src = resources.weatherIconCont.tornado;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Clear') {
-      weatherIcon.src = iconResources.clear;
+      weatherIcon.src = resources.weatherIconCont.clear;
       logo.src = apiIcon;
     } else if (weatherCondition == 'Clouds') {
-      weatherIcon.src = iconResources.clouds;
+      weatherIcon.src = resources.weatherIconCont.clouds;
       logo.src = apiIcon;
     } else {
       throw new Error('Weather not found!');
     }
 
     // Show weather temperature in celcius
-    temperature.textContent = `${Math.round(data.main.temp)}°C`;
-
-    // Show weather details 'Feels like...'
-    const feelsLike = (tempDetailsUnit.textContent = Math.round(
-      data.main.feels_like
-    ));
-    tempDetails.textContent = `Feels like ${feelsLike}°C`;
-
-    // TODO: Change icon when the temperature more than or lower than 15 °C
     const realTemp = data.main.temp;
     const feelsLikeTemp = data.main.feels_like;
 
+    temperature.textContent = `${realTemp.toFixed()}°C`;
+
+    // Show weather details 'Feels like...'
+    tempDetails.textContent = `Feels like ${feelsLikeTemp.toFixed()}°C`;
+
+    // Change icon when the the feels like temperature higher or lower than real temperature °C
+
     if (feelsLikeTemp < realTemp) {
-      feelsLikeIcon.src = 'assets/images/misc-icons/thermometer-colder.svg';
+      feelsLikeIcon.src = resources.feelsLikeCont.thermometerColder;
     } else if (feelsLikeTemp > realTemp) {
-      feelsLikeIcon.src = 'assets/images/misc-icons/thermometer-warmer.svg';
-    } else {
-      feelsLikeIcon.src = 'assets/images/misc-icons/thermometer.svg';
+      feelsLikeIcon.src = resources.feelsLikeCont.thermometerWarmer;
+    } else if (feelsLikeTemp === realTemp) {
+      feelsLikeIcon.src = resources.feelsLikeCont.thermometerNormal;
     }
 
     // Show wind direction
-    let compassSector = [
-      'N',
-      'NNE',
-      'NE',
-      'ENE',
-      'E',
-      'ESE',
-      'SE',
-      'SSE',
-      'S',
-      'SSW',
-      'SW',
-      'WSW',
-      'W',
-      'WNW',
-      'NW',
-      'NNW',
-      'N',
-    ];
-
     windDirection.textContent =
-      compassSector[(data.wind.deg / 22.5).toFixed(0)];
+      resources.compassSector[(data.wind.deg / 22.5).toFixed()];
 
     // Show humidity
-    humidity.textContent = data.main.humidity;
+    const humidityData = data.main.humidity;
+    humidityTxt.textContent = humidityData;
     humidityUnit.textContent = ' %';
-    humidity.appendChild(humidityUnit);
+    humidityTxt.appendChild(humidityUnit);
+
+    /*
+    <25 = too dry
+    26-29 = dry
+    30-60 = optimal
+    61-69 = humid
+    >70 = too humid
+    */
+
+    if (humidityData <= 25) {
+      humidityDesc.textContent = 'Arid';
+    } else if (humidityData >= 26 && humidityData <= 29) {
+      humidityDesc.textContent = 'Dry';
+    } else if (humidityData >= 30 && humidityData <= 60) {
+      humidityDesc.textContent = 'Comfortable';
+    } else if (humidityData >= 61 && humidityData <= 69) {
+      humidityDesc.textContent = 'Humid';
+    } else if (humidityData >= 70 && humidityData <= 90) {
+      humidityDesc.textContent = 'Moist';
+    } else if (humidityData >= 91) {
+      humidityDesc.textContent = 'Wet';
+    }
 
     // Show wind speed
-    windSpeed.textContent = data.wind.speed;
-    windSpeedUnit.textContent = ' m/s';
-    windSpeed.appendChild(windSpeedUnit);
+    const windSpeed = data.wind.speed * 3.6;
+    const windScale = windSpeed.toFixed(1);
+
+    windSpeedTxt.textContent = windScale;
+    windSpeedUnit.textContent = ' km/h';
+    windSpeedTxt.appendChild(windSpeedUnit);
+
+    // Change wind speed icon according to wind beaufort scale
+    if (windScale < 1) {
+      windSpeedImg.src = resources.windSpeedCont.calm;
+      windSpeedDesc.textContent = 'Calm';
+    } else if (windScale >= 1 && windScale <= 5) {
+      windSpeedImg.src = resources.windSpeedCont.lightAir;
+      windSpeedDesc.textContent = 'Light Air';
+    } else if (windScale >= 6 && windScale <= 11) {
+      windSpeedImg.src = resources.windSpeedCont.lightBreeze;
+      windSpeedDesc.textContent = 'Light Breeze';
+    } else if (windScale >= 12 && windScale <= 19) {
+      windSpeedImg.src = resources.windSpeedCont.gentleBreeze;
+      windSpeedDesc.textContent = 'Gentle Breeze';
+    } else if (windScale >= 20 && windScale <= 28) {
+      windSpeedImg.src = resources.windSpeedCont.moderateBreeze;
+      windSpeedDesc.textContent = 'Moderate Breeze';
+    } else if (windScale >= 29 && windScale <= 38) {
+      windSpeedImg.src = resources.windSpeedCont.freshBreeze;
+      windSpeedDesc.textContent = 'Fresh Breeze';
+    } else if (windScale >= 39 && windScale <= 49) {
+      windSpeedImg.src = resources.windSpeedCont.strongBreeze;
+      windSpeedDesc.textContent = 'Strong Breeze';
+    } else if (windScale >= 50 && windScale <= 61) {
+      windSpeedImg.src = resources.windSpeedCont.nearGale;
+      windSpeedDesc.textContent = 'Near Gale';
+    } else if (windScale >= 62 && windScale <= 74) {
+      windSpeedImg.src = resources.windSpeedCont.gale;
+      windSpeedDesc.textContent = 'Gale';
+    } else if (windScale >= 75 && windScale <= 88) {
+      windSpeedImg.src = resources.windSpeedCont.strongGale;
+      windSpeedDesc.textContent = 'Strong Gale';
+    } else if (windScale >= 89 && windScale <= 102) {
+      windSpeedImg.src = resources.windSpeedCont.storm;
+      windSpeedDesc.textContent = 'Storm';
+    } else if (windScale >= 103 && windScale <= 117) {
+      windSpeedImg.src = resources.windSpeedCont.violentStorm;
+      windSpeedDesc.textContent = 'Violent Storm';
+    } else if (windScale > 118) {
+      windSpeedImg.src = resources.windSpeedCont.hurricane;
+      windSpeedDesc.textContent = 'Hurricane';
+    }
 
     // Show pressure
-    pressure.textContent = data.main.pressure;
+    const pressureData = data.main.pressure;
+    pressureTxt.textContent = pressureData;
     pressureUnit.textContent = ' hPa';
-    pressure.appendChild(pressureUnit);
+    pressureTxt.appendChild(pressureUnit);
 
-    //TODO: Change icon when the pressure is lower or higher than 1013hPa
+    //Change icon when the pressure is lower or higher than 1013hPa
+    const avgPressure = 1017;
+    if (pressureData < avgPressure) {
+      pressureImg.src = resources.pressureCont.pressureLow;
+      pressureDesc.textContent = 'Lower Air Pressure';
+    } else if (pressureData > avgPressure) {
+      pressureImg.src = resources.pressureCont.pressureHigh;
+      pressureDesc.textContent = 'Higher Air Pressure';
+    } else if (pressureData === avgPressure) {
+      pressureImg.src = resources.pressureCont.pressureAvg;
+    }
 
     // Show sunrise and sunset
     const { sunrise } = data.sys;
@@ -285,7 +357,7 @@ function getUserCoordinates() {
 }
 
 // Show current weather on page load
-window.addEventListener('load', checkWeather('Yogyakarta'));
+checkWeather('Yogyakarta');
 
 // Show weather using getUserCoordinate()
 locationBtn.addEventListener('click', getUserCoordinates);
@@ -330,14 +402,14 @@ function loading() {
   }
   weatherIcon.hidden = true;
   windDirection.hidden = true;
-  humidity.hidden = true;
+  humidityTxt.hidden = true;
 }
 
 // Hide Loader
 function complete() {
   weatherIcon.hidden = false;
   windDirection.hidden = false;
-  humidity.hidden = false;
+  humidityTxt.hidden = false;
   loader.hidden = true;
   for (const eachLoader of loaderTxt) {
     eachLoader.hidden = true;
