@@ -18,6 +18,9 @@
   --main-font-color: rgb(30, 31, 32);
   --secondary-font-color: rgb(81, 90, 97);
 
+  /* Modal Window Colors */
+  --warning-1-color: rgb(38, 55, 55);
+
   /* Custom Fonts */
   --logo-font: 'Montserrat Alternates';
   --main-font: 'Varela Round';
@@ -36,6 +39,9 @@
 
   /* Border Radius */
   --main-border-radius: 20px;
+
+  /* Overlay */
+  --main-overlay-color: rgba(55, 58, 60, 0.6);
 }
 
 /* General Styling */
@@ -55,17 +61,19 @@ html {
 body {
   background-color: var(--main-background);
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
   width: 70rem;
-  margin: 0 3rem;
+  margin: 0 5rem;
 }
 
 /* Header Styling */
 .logo-container {
   display: flex;
   align-items: center;
+  margin-left: 20px;
 }
 
 .weatherly-logo {
@@ -85,8 +93,8 @@ header {
   align-items: center;
   justify-content: space-between;
   background-color: var(--nav-background);
-  padding: 10px 30px;
-  height: 4.7rem;
+  width: 100%;
+  height: 5.5rem;
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
 }
@@ -96,6 +104,7 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  margin: 0 25px;
 }
 
 .search-bar {
@@ -165,6 +174,7 @@ nav {
   grid-template-columns: 25% auto;
   grid-template-rows: auto;
   gap: 2rem;
+  width: 100%;
 }
 
 /* Current City Weather Styling */
@@ -379,6 +389,63 @@ nav {
 
 .loading-dot-text {
   width: 2rem;
+}
+
+/* Modal Window Styling */
+.msg {
+  position: fixed;
+  z-index: 2;
+  height: 4.5rem;
+  width: 40rem;
+  border-radius: var(--main-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100rem);
+  transition: transform 300ms ease-in-out;
+}
+
+.warning-1,
+.warning-2 {
+  color: #fff;
+  background-color: var(--warning-1-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.warning-1-text {
+  padding-right: 20px;
+  width: 80%;
+}
+
+.warning-2-text {
+  padding-right: 20px;
+}
+
+.msg-active {
+  transform: translateY(-20rem);
+}
+
+.warning-image {
+  width: 4rem;
+}
+
+.overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: var(--main-overlay-color);
+  transition: opacity 300ms ease-in-out;
+  backdrop-filter: blur(0.2rem);
+}
+
+.overlay-active {
+  z-index: 1;
+  opacity: 1;
 }
 
 /* Media Queries */
