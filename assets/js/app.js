@@ -1,7 +1,7 @@
 'use strict';
 
-// Import weather icons from icon-resources.js module
-import resources from './icon-resources.js';
+// Import weather icons from themeIcons.js module
+import resources from './themeIcons.js';
 
 // -------------------------------------------------
 
@@ -79,7 +79,6 @@ const getTime = querySelector('.time');
 // Open Weather API
 const apiKey = 'a6efd444d5287faaebffb105784f5590';
 const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
-const apiIcon = 'https://openweathermap.org/img/wn/';
 
 // Loader DOM Element
 const loader = querySelector('.loading-dot');
@@ -87,19 +86,45 @@ const loaderTxt = document.querySelectorAll('.loading-dot-text');
 
 // -------------------------------------------------
 
+// Modal WIndow DOM Elements
+const emptyInput = querySelector('.warning-1');
+const warningMsgTxt = querySelector('.warning-1-text');
+const errorInput = querySelector('.warning-2');
+const errorMsgTxt = querySelector('.warning-2-text');
+const overlay = querySelector('.overlay');
+
+// -------------------------------------------------
+
 // Get Current Weather
 async function checkWeather(city, latitude, longitude) {
+  // Error messages
+  const wrongInput =
+    'The city is not found. Please check your spelling and try again.';
+  const emptyInput =
+    'Oops! We are having trouble getting the weather information right now. Please try again later.';
+
+  // Loading animation
   loading();
+
   try {
     const response = await fetch(
       apiUrl + `&q=${city}&${latitude}&${longitude}&appid=${apiKey}`
     );
 
     if (!response.ok) {
-      throw new Error('City not found!');
+      if (response.status === 404) {
+        throw new Error(wrongInput);
+      } else {
+        throw new Error(emptyInput);
+      }
     }
+
     let data = await response.json();
     console.log(data);
+
+    // Show weather icon besdes logo
+    let weatherImage = data.weather[0].icon;
+    let apiIcon = `https://openweathermap.org/img/wn/${weatherImage}@2x.png`;
 
     // Show weather location and country
     weatherLocation.textContent = data.name;
@@ -109,58 +134,30 @@ async function checkWeather(city, latitude, longitude) {
     // Show weather description
     weatherDesc.textContent = data.weather[0].description;
 
-    // Show weather icon
+    // Show weather icon on weather overview
     let weatherCondition = data.weather[0].main;
-    let weatherImage = data.weather[0].icon;
-    let apiIcon = `https://openweathermap.org/img/wn/${weatherImage}@2x.png`;
 
-    if (weatherCondition == 'Thunderstorm') {
-      weatherIcon.src = resources.weatherIconCont.thunderstorm;
+    const weatherIcons = {
+      Thunderstorm: resources.weatherIconCont.thunderstorm,
+      Drizzle: resources.weatherIconCont.drizzle,
+      Rain: resources.weatherIconCont.rain,
+      Snow: resources.weatherIconCont.snow,
+      Mist: resources.weatherIconCont.mist,
+      Smoke: resources.weatherIconCont.smoke,
+      Haze: resources.weatherIconCont.haze,
+      Dust: resources.weatherIconCont.dust,
+      Fog: resources.weatherIconCont.fog,
+      Sand: resources.weatherIconCont.sand,
+      Ash: resources.weatherIconCont.ash,
+      Squalls: resources.weatherIconCont.squalls,
+      Tornado: resources.weatherIconCont.tornado,
+      Clear: resources.weatherIconCont.clear,
+      Clouds: resources.weatherIconCont.clouds,
+    };
+
+    if (weatherIcons.hasOwnProperty(weatherCondition)) {
+      weatherIcon.src = weatherIcons[weatherCondition];
       logo.src = apiIcon;
-    } else if (weatherCondition == 'Drizzle') {
-      weatherIcon.src = resources.weatherIconCont.drizzle;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Rain') {
-      weatherIcon.src = resources.weatherIconCont.rain;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Snow') {
-      weatherIcon.src = resources.weatherIconCont.snow;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Mist') {
-      weatherIcon.src = resources.weatherIconCont.mist;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Smoke') {
-      weatherIcon.src = resources.weatherIconCont.smoke;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Haze') {
-      weatherIcon.src = resources.weatherIconCont.haze;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Dust') {
-      weatherIcon.src = resources.weatherIconCont.dust;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Fog') {
-      weatherIcon.src = resources.weatherIconCont.fog;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Sand') {
-      weatherIcon.src = resources.weatherIconCont.sand;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Ash') {
-      weatherIcon.src = resources.weatherIconCont.ash;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Squalls') {
-      weatherIcon.src = resources.weatherIconCont.squalls;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Tornado') {
-      weatherIcon.src = resources.weatherIconCont.tornado;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Clear') {
-      weatherIcon.src = resources.weatherIconCont.clear;
-      logo.src = apiIcon;
-    } else if (weatherCondition == 'Clouds') {
-      weatherIcon.src = resources.weatherIconCont.clouds;
-      logo.src = apiIcon;
-    } else {
-      throw new Error('Weather not found!');
     }
 
     // Show weather temperature in celcius
@@ -192,13 +189,7 @@ async function checkWeather(city, latitude, longitude) {
     humidityUnit.textContent = ' %';
     humidityTxt.appendChild(humidityUnit);
 
-    /*
-    <25 = too dry
-    26-29 = dry
-    30-60 = optimal
-    61-69 = humid
-    >70 = too humid
-    */
+    // Change the humidity text description if the humidity data is on a ceratin level
 
     if (humidityData <= 25) {
       humidityDesc.textContent = 'Arid';
@@ -226,37 +217,37 @@ async function checkWeather(city, latitude, longitude) {
     if (windScale < 1) {
       windSpeedImg.src = resources.windSpeedCont.calm;
       windSpeedDesc.textContent = 'Calm';
-    } else if (windScale >= 1 && windScale <= 5) {
+    } else if (windScale >= 1 && windScale <= 5.9) {
       windSpeedImg.src = resources.windSpeedCont.lightAir;
       windSpeedDesc.textContent = 'Light Air';
-    } else if (windScale >= 6 && windScale <= 11) {
+    } else if (windScale >= 6 && windScale <= 11.9) {
       windSpeedImg.src = resources.windSpeedCont.lightBreeze;
       windSpeedDesc.textContent = 'Light Breeze';
-    } else if (windScale >= 12 && windScale <= 19) {
+    } else if (windScale >= 12 && windScale <= 19.9) {
       windSpeedImg.src = resources.windSpeedCont.gentleBreeze;
       windSpeedDesc.textContent = 'Gentle Breeze';
-    } else if (windScale >= 20 && windScale <= 28) {
+    } else if (windScale >= 20 && windScale <= 28.9) {
       windSpeedImg.src = resources.windSpeedCont.moderateBreeze;
       windSpeedDesc.textContent = 'Moderate Breeze';
-    } else if (windScale >= 29 && windScale <= 38) {
+    } else if (windScale >= 29 && windScale <= 38.9) {
       windSpeedImg.src = resources.windSpeedCont.freshBreeze;
       windSpeedDesc.textContent = 'Fresh Breeze';
-    } else if (windScale >= 39 && windScale <= 49) {
+    } else if (windScale >= 39 && windScale <= 49.9) {
       windSpeedImg.src = resources.windSpeedCont.strongBreeze;
       windSpeedDesc.textContent = 'Strong Breeze';
     } else if (windScale >= 50 && windScale <= 61) {
       windSpeedImg.src = resources.windSpeedCont.nearGale;
       windSpeedDesc.textContent = 'Near Gale';
-    } else if (windScale >= 62 && windScale <= 74) {
+    } else if (windScale >= 62 && windScale <= 74.9) {
       windSpeedImg.src = resources.windSpeedCont.gale;
       windSpeedDesc.textContent = 'Gale';
-    } else if (windScale >= 75 && windScale <= 88) {
+    } else if (windScale >= 75 && windScale <= 88.9) {
       windSpeedImg.src = resources.windSpeedCont.strongGale;
       windSpeedDesc.textContent = 'Strong Gale';
-    } else if (windScale >= 89 && windScale <= 102) {
+    } else if (windScale >= 89 && windScale <= 102.9) {
       windSpeedImg.src = resources.windSpeedCont.storm;
       windSpeedDesc.textContent = 'Storm';
-    } else if (windScale >= 103 && windScale <= 117) {
+    } else if (windScale >= 103 && windScale <= 117.9) {
       windSpeedImg.src = resources.windSpeedCont.violentStorm;
       windSpeedDesc.textContent = 'Violent Storm';
     } else if (windScale > 118) {
@@ -322,7 +313,13 @@ async function checkWeather(city, latitude, longitude) {
 
     getTime.textContent = longFormatDate;
   } catch (error) {
-    console.error('Cannot fetch the weather because:', error);
+    if (error.message === wrongInput) {
+      errorMsgTxt.textContent = wrongInput;
+      showErrorMsg();
+    } else if (error.message === emptyInput) {
+      warningMsgTxt.textContent = emptyInput;
+      showWarningMsg();
+    }
   }
   complete();
 }
@@ -364,31 +361,60 @@ locationBtn.addEventListener('click', getUserCoordinates);
 
 // -------------------------------------------------
 
-// Search a city name on mouse click
-searchBtn.addEventListener('click', () => {
-  if (cityInput.value === '') {
-    checkWeather('Yogyakarta');
-  } else if (cityInput.value) {
-    checkWeather(cityInput.value);
-    cityInput.value = '';
-  } else {
-    checkWeather('Yogyakarta');
-    cityInput.value = '';
+// Clear warning message
+function clearMsg() {
+  emptyInput.classList.remove('msg-active');
+  errorInput.classList.remove('msg-active');
+  overlay.classList.remove('overlay-active');
+}
+
+// Show a warning message
+function showWarningMsg() {
+  emptyInput.classList.add('msg-active');
+  overlay.classList.add('overlay-active');
+  setTimeout(() => {
+    clearMsg();
+  }, 2700);
+}
+
+// Show an error message
+function showErrorMsg() {
+  errorInput.classList.add('msg-active');
+  overlay.classList.add('overlay-active');
+  setTimeout(() => {
+    clearMsg();
+  }, 2700);
+}
+
+// Close modal window when clicked outside its area
+overlay.addEventListener('click', () => {
+  clearMsg();
+});
+
+// Close modal window when pressed Escape
+document.addEventListener('keydown', (e) => {
+  if (
+    e.key === 'Escape' ||
+    errorInput.classList.contains('msg-active') ||
+    overlay.classList.contains('overlay-active')
+  ) {
+    clearMsg();
   }
 });
 
+// -------------------------------------------------
+
+// Search a city name on mouse click
+searchBtn.addEventListener('click', async () => {
+  await checkWeather(cityInput.value);
+  cityInput.value = '';
+});
+
 // Search a city name on presskey (Enter)
-cityInput.addEventListener('keydown', (enter) => {
+cityInput.addEventListener('keydown', async (enter) => {
   if (enter.key === 'Enter') {
-    if (cityInput.value === '') {
-      checkWeather('Yogyakarta');
-    } else if (cityInput.value) {
-      checkWeather(cityInput.value);
-      cityInput.value = '';
-    } else {
-      checkWeather('Yogyakarta');
-      cityInput.value = '';
-    }
+    await checkWeather(cityInput.value);
+    cityInput.value = '';
   }
 });
 
