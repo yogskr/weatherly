@@ -4,15 +4,15 @@
 :root {
   /* Background Colors */
   --accent-background: rgba(229, 241, 243, 0.8);
-  --item-background: rgba(208, 239, 246, 0.3);
-  --location-button-background: rgba(160, 95, 234, 0.7);
+  --item-background: rgba(170, 216, 227, 0.505);
+  --location-button-background: rgba(160, 95, 234, 0.62);
   --main-background: rgba(227, 253, 253, 1);
   --nav-background: rgba(255, 185, 0, 0.6);
   --search-bar-background: rgba(207, 246, 233, 0.7);
   --search-button-background: rgba(12, 199, 137, 0.7);
   --weather-details-background: rgba(26, 175, 208, 0.6);
   --weather-overview-background: rgba(20, 184, 166, 0.6);
-  --date-time-background: rgba(27, 193, 118, 0.6);
+  --date-time-background: rgba(108, 128, 216, 0.725);
 
   /* Font Colors */
   --main-font-color: rgb(30, 31, 32);
@@ -67,6 +67,7 @@ body {
   height: 100vh;
   width: 70rem;
   margin: 0 5rem;
+  gap: 2.5rem;
 }
 
 /* Header Styling */
@@ -168,13 +169,18 @@ nav {
 }
 
 /* Weather Interface Styling */
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .weather-container {
-  margin-top: 40px;
   display: grid;
   grid-template-columns: 25% auto;
   grid-template-rows: auto;
   gap: 2rem;
-  width: 100%;
 }
 
 /* Current City Weather Styling */
@@ -197,7 +203,7 @@ nav {
   font-size: 2rem;
   font-weight: 700;
   color: var(--main-font-color);
-  margin-bottom: 10px;
+  margin-bottom: 1.2rem;
   text-align: center;
 }
 
@@ -243,6 +249,37 @@ nav {
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--date-time-background);
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--main-box-shadow);
+  padding: 20px;
+}
+
+.heading-text {
+  align-self: flex-end;
+  background-color: var(--item-background);
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: var(--main-border-radius);
+}
+
+.heading-text h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.date-time {
+  padding: 10px 20px;
+  background-color: var(--item-background);
+  border-radius: var(--main-border-radius);
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: fit-content;
 }
 
 .grid-container {
@@ -295,16 +332,13 @@ nav {
   background-color: var(--item-background);
   border-radius: var(--main-border-radius);
   padding: 10px 0 20px 0;
-  box-shadow: var(--item-box-shadow);
-  transform: var(--item-transform-hover);
   transition: var(--active-transition);
   height: 11.5rem;
 }
 
 .image-container:hover {
-  box-shadow: var(--active-box-shadow);
-  transform: var(--item-transform-active);
-  transition: var(--active-transition);
+  box-shadow: var(--item-box-shadow);
+  transform: var(--item-transform-hover);
 }
 
 .text-details {
@@ -325,62 +359,6 @@ nav {
   font-weight: 500;
 }
 
-/* Footer Styling */
-.footer {
-  padding: 15px;
-  background-color: var(--date-time-background);
-  border-radius: var(--main-border-radius);
-  box-shadow: var(--main-box-shadow);
-}
-
-.info {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.time {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--main-font-color);
-  background-color: var(--item-background);
-  border-radius: var(--main-border-radius);
-  padding: 12px 25px;
-}
-
-.time:hover {
-  box-shadow: var(--item-box-shadow);
-  transform: var(--item-transform-hover);
-  transition: var(--active-transition);
-}
-
-.social {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 1.1rem;
-}
-
-.social-link {
-  display: flex;
-  align-items: center;
-}
-
-.github,
-.threads {
-  width: 23px;
-  background-color: var(--item-background);
-  border-radius: 25px;
-  padding: 12px;
-}
-
-.github:hover,
-.threads:hover {
-  transform: var(--item-transform-hover);
-  transition: var(--active-transition);
-  box-shadow: var(--item-box-shadow);
-}
-
 /* Loading Dot Styling */
 .loading-dot {
   width: 4.5rem;
@@ -395,7 +373,7 @@ nav {
   position: fixed;
   z-index: 2;
   height: 4.5rem;
-  width: 40rem;
+  width: auto;
   border-radius: var(--main-border-radius);
   display: flex;
   align-items: center;
@@ -414,7 +392,6 @@ nav {
 
 .warning-1-text {
   padding-right: 20px;
-  width: 80%;
 }
 
 .warning-2-text {
