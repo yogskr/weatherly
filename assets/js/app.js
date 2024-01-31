@@ -167,7 +167,7 @@ async function checkWeather(city, latitude, longitude) {
     temperature.textContent = `${realTemp.toFixed()}°C`;
 
     // Show weather details 'Feels like...'
-    tempDetails.textContent = `Feels like ${feelsLikeTemp.toFixed()}°C`;
+    tempDetails.textContent = `Feels like ${feelsLikeTemp.toFixed(1)}°C`;
 
     // Change icon when the the feels like temperature higher or lower than real temperature °C
 
@@ -265,10 +265,10 @@ async function checkWeather(city, latitude, longitude) {
     const avgPressure = 1017;
     if (pressureData < avgPressure) {
       pressureImg.src = resources.pressureCont.pressureLow;
-      pressureDesc.textContent = 'Lower Air Pressure';
+      pressureDesc.textContent = 'Lower Pressure';
     } else if (pressureData > avgPressure) {
       pressureImg.src = resources.pressureCont.pressureHigh;
-      pressureDesc.textContent = 'Higher Air Pressure';
+      pressureDesc.textContent = 'Higher Pressure';
     } else if (pressureData === avgPressure) {
       pressureImg.src = resources.pressureCont.pressureAvg;
     }
