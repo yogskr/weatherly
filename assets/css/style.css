@@ -4,7 +4,6 @@
 :root {
   /* Background Colors */
   --accent-background: rgba(229, 241, 243, 0.8);
-  --footer-background: rgba(246, 74, 102, 0.6);
   --item-background: rgba(208, 239, 246, 0.3);
   --location-button-background: rgba(160, 95, 234, 0.7);
   --main-background: rgba(227, 253, 253, 1);
@@ -13,6 +12,7 @@
   --search-button-background: rgba(12, 199, 137, 0.7);
   --weather-details-background: rgba(26, 175, 208, 0.6);
   --weather-overview-background: rgba(20, 184, 166, 0.6);
+  --date-time-background: rgba(27, 193, 118, 0.6);
 
   /* Font Colors */
   --main-font-color: rgb(30, 31, 32);
@@ -142,8 +142,8 @@ nav {
   font-size: 1.1rem;
   font-weight: 900;
   color: var(--main-font-color);
-  padding: 12px 20px;
-  border-radius: 20px;
+  padding: 12px;
+  border-radius: 25px;
 }
 
 .search-button {
@@ -180,8 +180,7 @@ nav {
 /* Current City Weather Styling */
 .weather-overview {
   background-color: var(--weather-overview-background);
-  height: 100%;
-  padding: 0 20px;
+  padding: 25px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -214,7 +213,7 @@ nav {
   font-weight: 800;
   text-align: center;
   color: var(--main-font-color);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .feels-like {
@@ -328,8 +327,8 @@ nav {
 
 /* Footer Styling */
 .footer {
-  padding: 25px;
-  background-color: var(--footer-background);
+  padding: 15px;
+  background-color: var(--date-time-background);
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
 }
@@ -337,7 +336,7 @@ nav {
 .info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .time {
@@ -371,7 +370,7 @@ nav {
 .threads {
   width: 23px;
   background-color: var(--item-background);
-  border-radius: var(--main-border-radius);
+  border-radius: 25px;
   padding: 12px;
 }
 
