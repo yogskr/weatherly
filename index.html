@@ -18,7 +18,9 @@
       crossorigin="anonymous"></script>
   </head>
   <body>
+    <!-- overlay -->
     <div class="overlay"></div>
+    <!-- warning message -->
     <div class="warning-1 msg">
       <img
         class="warning-image"
@@ -45,131 +47,118 @@
         <i class="fa-solid fa-location-crosshairs location-button"></i>
       </nav>
     </header>
-    <main class="weather-container">
-      <!-- current city -->
-      <div class="weather-overview">
-        <h1 class="location">City<span class="country"></span></h1>
-        <p class="weather-desc">weather</p>
-        <img class="weather-icon" src="" />
-        <img
-          class="loading-dot"
-          src="./assets/images/misc-icons/loading-dot.svg" />
-        <h2 class="temperature">NaN<span class="temp-unit"></span></h2>
-        <div class="feels-like">
-          <img class="feels-like-icon" src="" />
-          <p class="temp-details">
-            Feels like <span class="temp-details-unit">NaN</span>
-          </p>
-        </div>
-      </div>
-      <!-- weather details -->
-      <div class="weather-details">
-        <div class="grid-container">
-          <div class="grid-1 image-container">
-            <img
-              class="grid-image wind-direction"
-              src="./assets/images/weather-details/windsock.svg" />
-            <div class="text-details">
-              <p class="text-mod">Wind direction</p>
-              <p class="data wind-direction-text"></p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
-          </div>
-          <div class="grid-2 image-container">
-            <img
-              class="grid-image humidity"
-              src="./assets/images/weather-details/humidity.svg" />
-            <div class="text-details">
-              <p class="text-normal humidity-desc">Humidity</p>
-              <p class="data humidity-text">
-                <span class="unit humidity-unit"></span>
-              </p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
-          </div>
-          <div class="grid-3 image-container">
-            <img
-              class="grid-image wind-speed"
-              src="./assets/images/weather-details/wind.svg" />
-            <div class="text-details">
-              <p class="text-mod wind-speed-desc">Wind speed</p>
-              <p class="data wind-speed-text">
-                <span class="unit wind-speed-unit"></span>
-              </p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
-          </div>
-          <div class="grid-4 image-container">
-            <img
-              class="grid-image pressure"
-              src="./assets/images/weather-details/barometer.svg" />
-            <div class="text-details">
-              <p class="text-normal pressure-desc">Average Pressure</p>
-              <p class="data pressure-text">
-                <span class="unit pressure-unit"></span>
-              </p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
-          </div>
-          <div class="grid-5 image-container">
-            <img
-              class="grid-image sunrise"
-              src="./assets/images/weather-details/sunrise.svg" />
-            <div class="text-details">
-              <p class="text-normal">Sunrise</p>
-              <p class="data sunrise-text"></p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
-          </div>
-          <div class="grid-6 image-container">
-            <img
-              class="grid-image sunset"
-              src="./assets/images/weather-details/sunset.svg" />
-            <div class="text-details">
-              <p class="text-normal">Sunset</p>
-              <p class="data sunset-text"></p>
-              <img
-                class="loading-dot-text"
-                src="./assets/images/misc-icons/loading-dot.svg" />
-            </div>
+    <main>
+      <section class="weather-container">
+        <!-- current city -->
+        <div class="weather-overview">
+          <h1 class="location">City<span class="country"></span></h1>
+          <p class="weather-desc">weather</p>
+          <img class="weather-icon" src="" />
+          <img
+            class="loading-dot"
+            src="./assets/images/misc-icons/loading-dot.svg" />
+          <h2 class="temperature">NaN<span class="temp-unit"></span></h2>
+          <div class="feels-like">
+            <img class="feels-like-icon" src="" />
+            <p class="temp-details">
+              Feels like <span class="temp-details-unit">NaN</span>
+            </p>
           </div>
         </div>
-        <div class="footer">
-          <div class="info">
-            <!-- <div class="social">
-              <a
-                class="social-link"
-                title="GitHub"
-                href="https://github.com/yogskr"
-                target="_blank">
+        <!-- weather details -->
+        <div class="weather-details">
+          <!-- Weahter Heading text -->
+          <div class="heading-container">
+            <div class="date-time">
+              <p class="time"></p>
+            </div>
+            <div class="heading-text">
+              <h2>Today Overview</h2>
+            </div>
+          </div>
+          <!-- weather deatils box -->
+          <div class="grid-container">
+            <div class="grid-1 image-container">
+              <img
+                class="grid-image wind-direction"
+                src="./assets/images/weather-details/windsock.svg" />
+              <div class="text-details">
+                <p class="text-mod">Wind direction</p>
+                <p class="data wind-direction-text"></p>
                 <img
-                  class="github"
-                  src="./assets/images/brand-icons/github.svg" />
-              </a>
-              <a
-                class="social-link"
-                title="Threads"
-                href="https://threads.net/@yogskr"
-                target="_blank">
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
+            <div class="grid-2 image-container">
+              <img
+                class="grid-image humidity"
+                src="./assets/images/weather-details/humidity.svg" />
+              <div class="text-details">
+                <p class="text-normal humidity-desc">Humidity</p>
+                <p class="data humidity-text">
+                  <span class="unit humidity-unit"></span>
+                </p>
                 <img
-                  class="threads"
-                  src="./assets/images/brand-icons/threads.svg" />
-              </a>
-            </div> -->
-            <p class="time"></p>
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
+            <div class="grid-3 image-container">
+              <img
+                class="grid-image wind-speed"
+                src="./assets/images/weather-details/wind.svg" />
+              <div class="text-details">
+                <p class="text-mod wind-speed-desc">Wind speed</p>
+                <p class="data wind-speed-text">
+                  <span class="unit wind-speed-unit"></span>
+                </p>
+                <img
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
+            <div class="grid-4 image-container">
+              <img
+                class="grid-image pressure"
+                src="./assets/images/weather-details/barometer.svg" />
+              <div class="text-details">
+                <p class="text-normal pressure-desc">Average Pressure</p>
+                <p class="data pressure-text">
+                  <span class="unit pressure-unit"></span>
+                </p>
+                <img
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
+            <div class="grid-5 image-container">
+              <img
+                class="grid-image sunrise"
+                src="./assets/images/weather-details/sunrise.svg" />
+              <div class="text-details">
+                <p class="text-normal">Sunrise</p>
+                <p class="data sunrise-text"></p>
+                <img
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
+            <div class="grid-6 image-container">
+              <img
+                class="grid-image sunset"
+                src="./assets/images/weather-details/sunset.svg" />
+              <div class="text-details">
+                <p class="text-normal">Sunset</p>
+                <p class="data sunset-text"></p>
+                <img
+                  class="loading-dot-text"
+                  src="./assets/images/misc-icons/loading-dot.svg" />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <div class="status">
       <span id="status"></span>
