@@ -100,8 +100,7 @@ async function checkWeather(city, latitude, longitude) {
   // Error messages
   const wrongInput =
     'The city is not found. Please check your spelling and try again.';
-  const emptyInput =
-    'Oops! We are having trouble getting the weather information right now. Please try again later.';
+  const emptyInput = 'The input text cannot be empty! Please try again.';
 
   // Loading animation
   loading();
@@ -132,7 +131,19 @@ async function checkWeather(city, latitude, longitude) {
     weatherLocation.appendChild(weatherCountry);
 
     // Show weather description
-    weatherDesc.textContent = data.weather[0].description;
+    function capitalizeFirstLetter(string) {
+      let splitStr = string.toLowerCase().split(' ');
+      for (let i = 0; i < splitStr.length; i++) {
+        splitStr[i] =
+          splitStr[i].charAt(0).toUpperCase() + splitStr[i].slice(1);
+      }
+
+      return splitStr.join(' ');
+    }
+
+    const weatherText = data.weather[0].description;
+
+    weatherDesc.textContent = capitalizeFirstLetter(weatherText);
 
     // Show weather icon on weather overview
     let weatherCondition = data.weather[0].main;
