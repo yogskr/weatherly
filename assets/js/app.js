@@ -1,6 +1,6 @@
 'use strict';
 
-import fiveDaysForecast from './fiveDaysForecast.js';
+import fiveDaysForecast from './fiveDayForecast.js';
 import resources from './themeIcons.js';
 
 // -------------------------------------------------
