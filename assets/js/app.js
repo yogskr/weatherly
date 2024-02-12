@@ -1,6 +1,6 @@
 'use strict';
 
-// Import weather icons from themeIcons.js module
+import fiveDaysForecast from './fiveDaysForecast.js';
 import resources from './themeIcons.js';
 
 // -------------------------------------------------
@@ -76,10 +76,6 @@ const sunsetTime = querySelector('.sunset-text');
 // Footer DOM Elements
 const getTime = querySelector('.time');
 
-// Open Weather API
-const apiKey = 'a6efd444d5287faaebffb105784f5590';
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
-
 // Loader DOM Element
 const loader = querySelector('.loading-dot');
 const loaderTxt = document.querySelectorAll('.loading-dot-text');
@@ -96,6 +92,9 @@ const overlay = querySelector('.overlay');
 // -------------------------------------------------
 
 // Get Current Weather
+const API_KEY = 'a6efd444d5287faaebffb105784f5590';
+const API_URL = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
+
 async function checkWeather(city, latitude, longitude) {
   // Error messages
   const wrongInput =
@@ -107,7 +106,7 @@ async function checkWeather(city, latitude, longitude) {
 
   try {
     const response = await fetch(
-      apiUrl + `&q=${city}&${latitude}&${longitude}&appid=${apiKey}`
+      API_URL + `&q=${city}&${latitude}&${longitude}&appid=${API_KEY}`
     );
 
     if (!response.ok) {
@@ -323,6 +322,14 @@ async function checkWeather(city, latitude, longitude) {
     const longFormatDate = unixDate.toLocaleDateString(locale, options);
 
     getTime.textContent = longFormatDate;
+
+    // Show Five Days Forecast
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+
+    fiveDaysForecast(lat, lon);
+
+    //
   } catch (error) {
     if (error.message === wrongInput) {
       errorMsgTxt.textContent = wrongInput;
@@ -342,7 +349,7 @@ function getUserCoordinates() {
   navigator.geolocation.getCurrentPosition(
     (position) => {
       const { latitude, longitude } = position.coords;
-      const reverseGeocodongUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
+      const reverseGeocodongUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
 
       fetch(reverseGeocodongUrl)
         .then((response) => response.json())
