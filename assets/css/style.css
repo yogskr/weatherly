@@ -12,7 +12,7 @@
   --search-button-background: rgba(12, 199, 137, 0.7);
   --weather-details-background: rgba(26, 175, 208, 0.6);
   --weather-overview-background: rgba(20, 184, 166, 0.6);
-  --date-time-background: rgba(108, 128, 216, 0.725);
+  --heading-title-background: rgba(104, 168, 225, 0.725);
 
   /* Font Colors */
   --main-font-color: rgb(30, 31, 32);
@@ -64,9 +64,8 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
   width: 70rem;
-  margin: 0 5rem;
+  margin: 5rem;
   gap: 2.5rem;
 }
 
@@ -251,21 +250,24 @@ main {
   gap: 2rem;
 }
 
-.heading-container {
+.heading-container,
+.forecast-heading-container {
   display: flex;
   justify-content: space-between;
-  background-color: var(--date-time-background);
+  background-color: var(--heading-title-background);
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
   padding: 20px;
 }
 
-.heading-text {
+.heading-text,
+.forecast-title {
   align-self: flex-end;
   background-color: var(--item-background);
   width: fit-content;
   padding: 10px 20px;
   border-radius: var(--main-border-radius);
+  font-size: 1.3rem;
 }
 
 .heading-text h2 {
@@ -277,8 +279,8 @@ main {
   padding: 10px 20px;
   background-color: var(--item-background);
   border-radius: var(--main-border-radius);
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 500;
   width: fit-content;
 }
 
@@ -422,6 +424,31 @@ main {
 .overlay-active {
   z-index: 1;
   opacity: 1;
+}
+
+/* Five Day Forecast Styling */
+.five-day-forecast {
+  margin-top: 2rem;
+}
+
+.forecast-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 20px;
+  background-color: rgba(117, 139, 216, 0.6);
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--main-box-shadow);
 }
 
 /* Media Queries */
