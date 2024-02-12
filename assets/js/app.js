@@ -91,6 +91,16 @@ const overlay = querySelector('.overlay');
 
 // -------------------------------------------------
 
+// Five Day Forecast DOM Elements
+
+const arrowDownBtn = querySelector('.five-day-forecast-button');
+const arrowDownIcon = querySelector('.arrow-down-icon');
+const buttonText = querySelector('.button-text');
+
+const forecastItemCont = querySelector('.forecast-item-container');
+
+// -------------------------------------------------
+
 // Get Current Weather
 const API_KEY = 'a6efd444d5287faaebffb105784f5590';
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
@@ -177,7 +187,7 @@ async function checkWeather(city, latitude, longitude) {
     temperature.textContent = `${realTemp.toFixed()}°C`;
 
     // Show weather details 'Feels like...'
-    tempDetails.textContent = `Feels like ${feelsLikeTemp.toFixed(1)}°C`;
+    tempDetails.textContent = `Feels like  ${feelsLikeTemp.toFixed(1)}°C`;
 
     // Change icon when the the feels like temperature higher or lower than real temperature °C
 
@@ -459,3 +469,33 @@ function complete() {
     eachLoader.hidden = true;
   }
 }
+
+// Show text when the button is clicked
+function scrollToTop() {
+  document.documentElement.scrollTop = 0;
+}
+
+function eventHandler(event) {
+  if (event.type === 'mouseover') {
+    arrowDownIcon.classList.add('hide-arrow-down-icon');
+    buttonText.style.opacity = 1;
+    arrowDownBtn.style.width = '12rem';
+    if (arrowDownIcon.classList.contains('rotate-arrow-down-icon')) {
+      buttonText.style.opacity = '';
+      arrowDownBtn.style.width = '';
+      arrowDownIcon.classList.remove('hide-arrow-down-icon');
+    }
+  } else if (event.type === 'mouseout') {
+    arrowDownIcon.classList.remove('hide-arrow-down-icon');
+    buttonText.style.opacity = '';
+    arrowDownBtn.style.width = '';
+  } else if (event.type === 'click') {
+    arrowDownIcon.classList.toggle('rotate-arrow-down-icon');
+    forecastItemCont.classList.toggle('show-forecast-item-container');
+    scrollToTop();
+  }
+}
+
+arrowDownBtn.addEventListener('mouseover', eventHandler);
+arrowDownBtn.addEventListener('mouseout', eventHandler);
+arrowDownBtn.addEventListener('click', eventHandler);
