@@ -3,24 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- primary meta tags -->
+    <!-- Primary Meta Tags -->
     <title>weatherly</title>
     <meta name="title" content="weatherly" />
     <meta
       name="description"
       content="weatherly is a weather app made by yogskr" />
-    <!-- favicon and css -->
+    <!-- Favicon and CSS -->
     <link rel="shortcut icon" href="./favicon.png" type="image/png" />
     <link rel="stylesheet" href="./src/css/style.css" />
-    <!-- custom script -->
+    <!-- Custom Script -->
     <script
       src="https://kit.fontawesome.com/1ffc91e085.js"
       crossorigin="anonymous"></script>
   </head>
   <body>
-    <!-- overlay -->
+    <!-- Overlay -->
     <div class="overlay"></div>
-    <!-- warning message -->
+    <!-- Warning Message -->
     <div class="warning-1 msg">
       <img
         class="warning-image"
@@ -48,8 +48,9 @@
       </nav>
     </header>
     <main>
+      <!-- Show Current Weather Start -->
       <section class="weather-container">
-        <!-- current city -->
+        <!-- Current City -->
         <div class="weather-overview">
           <h1 class="location">City<span class="country"></span></h1>
           <p class="weather-desc">weather</p>
@@ -57,7 +58,7 @@
           <img
             class="loading-dot"
             src="./assets/images/misc-icons/loading-dot.svg" />
-          <h2 class="temperature">NaN<span class="temp-unit"></span></h2>
+          <h2 class="temperature"><span class="temp-unit"></span></h2>
           <div class="feels-like">
             <img class="feels-like-icon" src="" />
             <p class="temp-details">
@@ -65,7 +66,7 @@
             </p>
           </div>
         </div>
-        <!-- weather details -->
+        <!-- Weather Details -->
         <div class="weather-details">
           <!-- Weahter Heading text -->
           <div class="heading-container">
@@ -76,7 +77,7 @@
               <h2>Today Overview</h2>
             </div>
           </div>
-          <!-- weather deatils box -->
+          <!-- Weather Deatils Box -->
           <div class="grid-container">
             <div class="grid-1 image-container">
               <img
@@ -159,6 +160,8 @@
           </div>
         </div>
       </section>
+      <!-- Show Current Weather End -->
+
       <!-- Show Five Day Forecast Button Start -->
       <button class="five-day-forecast-button bounce">
         <a href="#five-day-forecast">
@@ -174,62 +177,23 @@
         </a>
       </button>
       <!-- Show Five Day Forecast Button End -->
+
       <!-- Five Day Forecast Start -->
       <section class="five-day-forecast">
-        <div class="forecast-item-container" id="five-day-forecast">
-          <div class="forecast forecast-item-1">
-            <h3>Day</h3>
-            <p>Date</p>
-            <img
-              src="./assets/images/weather-icons/drizzle.svg"
-              alt="Weather Icon Logo" />
-            <p>Temperature</p>
-            <p>Weather Description</p>
-          </div>
-          <div class="forecast forecast-item-2">
-            <h3>Day</h3>
-            <p>Date</p>
-            <img
-              src="./assets/images/weather-icons/drizzle.svg"
-              alt="Weather Icon Logo" />
-            <p>Temperature</p>
-            <p>Weather Description</p>
-          </div>
-          <div class="forecast forecast-item-3">
-            <h3>Day</h3>
-            <p>Date</p>
-            <img
-              src="./assets/images/weather-icons/drizzle.svg"
-              alt="Weather Icon Logo" />
-            <p>Temperature</p>
-            <p>Weather Description</p>
-          </div>
-          <div class="forecast forecast-item-4">
-            <h3>Day</h3>
-            <p>Date</p>
-            <img
-              src="./assets/images/weather-icons/drizzle.svg"
-              alt="Weather Icon Logo" />
-            <p>Temperature</p>
-            <p>Weather Description</p>
-          </div>
-          <div class="forecast forecast-item-5">
-            <h3>Day</h3>
-            <p>Date</p>
-            <img
-              src="./assets/images/weather-icons/drizzle.svg"
-              alt="Weather Icon Logo" />
-            <p>Temperature</p>
-            <p>Weather Description</p>
-          </div>
-        </div>
+        <div class="forecast-item-container" id="five-day-forecast"></div>
       </section>
       <!-- Five Day Forecast End -->
     </main>
+
+    <!-- Error Window Start -->
     <div class="status">
       <span id="status"></span>
     </div>
+    <!-- Error Wind End -->
+
+    <!-- Footer -->
+    <footer></footer>
   </body>
-  <!-- script -->
-  <script type="module" src="./src/js/app.js"></script>
+  <!-- Script -->
+  <script type="module" defer src="./src/js/main.js"></script>
 </html>
