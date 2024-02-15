@@ -54,6 +54,7 @@
 
 html {
   display: flex;
+  align-items: center;
   scroll-behavior: smooth;
 }
 
@@ -95,7 +96,7 @@ header {
   height: 5rem;
   border-radius: var(--main-border-radius);
   box-shadow: var(--main-box-shadow);
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 nav {
@@ -390,10 +391,7 @@ main {
   font-weight: 600;
 }
 
-.warning-1-text {
-  padding-right: 20px;
-}
-
+.warning-1-text,
 .warning-2-text {
   padding-right: 20px;
 }
@@ -412,7 +410,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   background-color: var(--main-overlay-color);
   transition: opacity 300ms ease-in-out;
@@ -496,6 +494,7 @@ main {
   width: 65rem;
 }
 
+/* Five Day Forecast Card */
 .forecast-item-container {
   transform: translateY(-10rem);
   display: none;
@@ -513,6 +512,7 @@ main {
 .forecast-item {
   width: 10rem;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -587,10 +587,6 @@ footer {
   width: 1.4em;
 }
 
-.social {
-  width: 9rem;
-}
-
 .social h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
@@ -601,6 +597,7 @@ footer {
   align-items: center;
   justify-content: flex-start;
   gap: 1.5rem;
+  width: fit-content;
 }
 
 .social-logos a {
@@ -632,6 +629,7 @@ form {
   flex-direction: column;
   justify-content: center;
   gap: 15px;
+  margin-bottom: 10px;
 }
 
 .name-input,
@@ -689,3 +687,349 @@ form {
 }
 
 /* Media Queries */
+@media screen and (max-width: 1024px) {
+  header,
+  .weather-container,
+  .five-day-forecast,
+  .footer-container {
+    width: 60rem;
+  }
+
+  /* Weather Overview Styling */
+  .weather-overview {
+    padding: 20px;
+  }
+
+  .weather-icon {
+    width: 12rem;
+  }
+
+  /* Five Day Forecast Styling */
+  .forecast-item {
+    padding: 30px 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header,
+  .weather-container,
+  .five-day-forecast,
+  .footer-container,
+  .copyright {
+    width: 45rem;
+  }
+
+  /* Weather Overview Styling */
+  .weather-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weather-overview {
+    display: grid;
+    grid-template-areas:
+      'weather-overview-text weather-icon'
+      'weather-overview-temp weather-icon';
+    justify-content: space-around;
+    height: fit-content;
+    padding: 0;
+  }
+
+  .overview-item-1 {
+    grid-area: weather-overview-text;
+  }
+
+  .overview-icon-container {
+    grid-area: weather-icon;
+  }
+
+  .overview-item-2 {
+    grid-area: weather-overview-temp;
+  }
+
+  .location {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .weather-desc {
+    font-size: 1.25rem;
+  }
+
+  .weather-icon {
+    width: 16rem;
+  }
+
+  .temperature {
+    font-size: 2.7rem;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  .feels-like {
+    justify-content: center;
+    width: auto;
+  }
+
+  .feels-like-icon {
+    width: 3rem;
+  }
+
+  .temp-details {
+    position: initial;
+  }
+
+  .forecast-item-container {
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Footer Styling */
+  form {
+    margin-bottom: 0;
+  }
+
+  .footer-item {
+    display: grid;
+    grid-template-areas:
+      'footer-1 footer-3'
+      'footer-2 footer-3';
+  }
+
+  .footer-header {
+    grid-area: footer-1;
+    height: auto;
+    justify-content: center;
+  }
+
+  .social {
+    grid-area: footer-2;
+    align-self: flex-end;
+  }
+
+  .contact {
+    grid-area: footer-3;
+  }
+}
+
+@media (max-width: 450px) {
+  header,
+  .weather-container,
+  .five-day-forecast,
+  .footer-container,
+  .copyright {
+    width: 22rem;
+  }
+
+  /* Header Styling */
+  header {
+    display: block;
+    height: fit-content;
+    padding: 0 5px 20px 5px;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  .search-bar {
+    width: 10rem;
+  }
+
+  /* Weather Overview Styling */
+  .weather-overview {
+    padding: 2.5rem 0;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .weather-icon {
+    width: 13rem;
+  }
+
+  .temperature {
+    font-size: 3.2rem;
+  }
+
+  .feels-like {
+    padding: 0 15px;
+  }
+
+  /* Heading Today Overview Styling */
+  .heading-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+  }
+
+  .heading-text {
+    align-self: center;
+    background-color: initial;
+  }
+
+  .heading-text h2 {
+    font-size: 1.2rem;
+  }
+
+  /* Weather Details Styling */
+  .grid-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .image-container {
+    width: 8.9rem;
+  }
+
+  .data {
+    font-size: 1.4rem;
+  }
+
+  /* Warning & Error Messages Styling */
+  .msg {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 17rem;
+    padding: 0 15px 15px 15px;
+    align-items: flex-start;
+    transform: translateY(-200rem);
+  }
+
+  .warning-1-text,
+  .warning-2-text {
+    padding-right: 0;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .warning-image {
+    width: 8rem;
+    align-self: center;
+  }
+
+  .msg-active {
+    transform: translateY(-50rem);
+  }
+
+  .forecast-item-container {
+    justify-content: center;
+  }
+
+  .forecast-item {
+    width: 9.2rem;
+  }
+
+  /* Footer Styling */
+  .footer-item {
+    display: block;
+  }
+
+  .footer-logo-text,
+  .contact h3 {
+    text-align: center;
+  }
+
+  .footer-header {
+    gap: 10px;
+  }
+
+  .footer-header,
+  .social {
+    margin-bottom: 3rem;
+  }
+
+  .footer-header {
+    align-items: center;
+  }
+
+  .footer-header,
+  .social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  header,
+  .weather-container,
+  .five-day-forecast,
+  .footer-container,
+  .copyright {
+    width: 20rem;
+  }
+
+  .weatherly-logo {
+    width: 4rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .weather-icon {
+    width: 12rem;
+  }
+
+  .temperature {
+    font-size: 2.6rem;
+  }
+
+  .msg-active {
+    transform: translateY(-70rem);
+  }
+
+  .heading-container,
+  .grid-container {
+    padding: 15px;
+  }
+
+  .image-container {
+    width: 8.5rem;
+    justify-content: center;
+    gap: 0.1rem;
+  }
+
+  .grid-image {
+    width: 6rem;
+  }
+
+  .data {
+    font-size: 1.3rem;
+  }
+
+  .forecast-item {
+    width: 8.2rem;
+  }
+
+  .forecast-item img {
+    width: 7rem;
+  }
+}
