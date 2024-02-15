@@ -3,19 +3,14 @@ import { weatherIconCont } from './components/iconResources.js';
 // Five Day Forecast DOM Elements
 const forecastItemCont = document.querySelector('.forecast-item-container');
 
-// TODO: Fetch 5 Days Forecast
+// Fetch 5 Days Forecast
 const API_KEY = 'a6efd444d5287faaebffb105784f5590';
 const API_URL = `https://api.openweathermap.org/data/2.5/forecast?units=metric`;
 
 // Store the last valid city
 let lastValidCity = '';
 
-export default async function fiveDayForecast(
-  city,
-  countryCode,
-  latitude,
-  longitude
-) {
+export default async function fiveDayForecast(city, latitude, longitude) {
   try {
     // Imported modules
     const capitalizedWeatherDesc = await import(
