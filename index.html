@@ -9,6 +9,7 @@
     <meta
       name="description"
       content="weatherly is a weather app made by yogskr" />
+
     <!-- Favicon and CSS -->
     <link rel="shortcut icon" href="./favicon.png" type="image/png" />
     <link rel="stylesheet" href="./src/css/style.css" />
@@ -66,18 +67,24 @@
       <section class="weather-container">
         <!-- Current City -->
         <div class="weather-overview">
-          <h1 class="location">City<span class="country"></span></h1>
-          <p class="weather-desc">weather</p>
-          <img class="weather-icon" src="" />
-          <img
-            class="loading-dot"
-            src="./assets/images/misc-icons/loading-dot.svg" />
-          <h2 class="temperature"><span class="temp-unit"></span></h2>
-          <div class="feels-like">
-            <img class="feels-like-icon" src="" />
-            <p class="temp-details">
-              Feels like <span class="temp-details-unit">NaN</span>
-            </p>
+          <div class="overview-item-1">
+            <h1 class="location">City<span class="country"></span></h1>
+            <p class="weather-desc">weather</p>
+          </div>
+          <figure class="overview-icon-container">
+            <img class="weather-icon" src="" />
+            <img
+              class="loading-dot"
+              src="./assets/images/misc-icons/loading-dot.svg" />
+          </figure>
+          <div class="overview-item-2">
+            <h2 class="temperature"><span class="temp-unit"></span></h2>
+            <div class="feels-like">
+              <img class="feels-like-icon" src="" />
+              <p class="temp-details">
+                Feels like <span class="temp-details-unit">NaN</span>
+              </p>
+            </div>
           </div>
         </div>
         <!-- Weather Details -->
@@ -193,8 +200,8 @@
       <!-- Show Five Day Forecast Button End -->
 
       <!-- Five Day Forecast Start -->
-      <section class="five-day-forecast">
-        <div class="forecast-item-container" id="five-day-forecast"></div>
+      <section class="five-day-forecast" id="five-day-forecast">
+        <div class="forecast-item-container"></div>
       </section>
       <!-- Five Day Forecast End -->
     </main>
@@ -250,7 +257,7 @@
             </div>
           </section>
           <section class="social">
-            <h3>Follow Us</h3>
+            <h3>Follow us</h3>
             <div class="social-logos">
               <a
                 target="_blank"
