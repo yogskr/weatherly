@@ -1,14 +1,15 @@
-# weatherly - a beautiful weather app
+# weatherly - a beautifully-designed weather app
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [Screenshot](#screenshot)
+- [Screenshot](#screenshot)
+- [Tech Stack](#techstack)
 - [Author](#author)
 
-## Overview
+### Overview
 
-weatherly is a beautifully designed weather app built using HTML5, CSS3, and asynchronous JavaScript. The weather data is fetched from Open Weather API.
+weatherly is a beautifully-designed weather app built using HTML5, CSS3, and asynchronous JavaScript. The weather data is fetched from Open Weather API.
 
 You can easily check the current weather in your city by searching the city name in the search bar. It also has a geolocation feature, which you can use to determine your current location.
 
@@ -28,7 +29,7 @@ weatherly also provides five day forecast, so you can check the following five d
 
 ![Desktop Screenshot](./assets/screenshots/desktop-screenshot.png)
 
-### Built with
+### Tech Stack
 
 This project is built with:
 
