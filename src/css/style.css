@@ -550,12 +550,13 @@ footer {
 
 .footer-container {
   width: 65rem;
-  padding: 2rem 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 .footer-logo-text {
   font-family: var(--logo-font);
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 15px;
 }
 
@@ -571,6 +572,11 @@ footer {
   align-items: flex-start;
   justify-content: center;
   gap: 15px;
+  font-size: 15px;
+}
+
+.open-weather {
+  width: 130px;
 }
 
 .tech-stack,
@@ -583,11 +589,11 @@ footer {
 
 .tech-stack-image,
 .social-logos a img {
-  width: 1.4em;
+  width: 1.3rem;
 }
 
 .social h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 15px;
 }
 
@@ -604,7 +610,7 @@ footer {
   align-items: center;
   background-color: rgba(131, 174, 177, 0.335);
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
 }
 
 .social-logos a:hover {
@@ -619,7 +625,7 @@ footer {
 }
 
 .contact h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 15px;
 }
 
@@ -638,7 +644,7 @@ form {
   outline: none;
   background-color: rgba(112, 154, 158, 0.335);
   color: var(--main-font-color);
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 10px;
@@ -661,7 +667,7 @@ form {
 .submit-button {
   border: none;
   background-color: var(--search-button-background);
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 600;
   padding: 10px 0;
   border-radius: var(--main-border-radius);
