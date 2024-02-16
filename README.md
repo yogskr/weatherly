@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
 - [Screenshot](#screenshot)
-- [Tech Stack](#techstack)
+- [Tech Stack](#tech-stack)
 - [Author](#author)
 
 ### Overview
@@ -38,7 +38,7 @@ This project is built with:
 - JavaScript (Asynchronous Programming)
 - Rest API
 
-## Author
+### Author
 
 - Website - [Yoga Krisanta](https://yogskr.github.io/personal-website)
 - Frontend Mentor - [@yogskr](https://www.frontendmentor.io/profile/yogskr)
