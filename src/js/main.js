@@ -102,6 +102,9 @@ const forecastItemCont = querySelector('.forecast-item-container');
 
 // -------------------------------------------------
 
+// Store the last valid city
+let lastValidCity = '';
+
 // Get Current Weather
 const API_KEY = weatherApiKey.key;
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
@@ -129,6 +132,9 @@ async function checkWeather(city, latitude, longitude) {
     }
 
     let data = await response.json();
+
+    // Update last valid city
+    lastValidCity = city;
 
     // Show weather icon besdes logo
     let weatherImage = data.weather[0].icon;
@@ -369,6 +375,10 @@ async function checkWeather(city, latitude, longitude) {
       warningMsgTxt.textContent = emptyInput;
       showWarningMsg();
     }
+
+    if (lastValidCity) {
+      await checkWeather(lastValidCity);
+    }
   }
   complete();
 }
@@ -379,31 +389,35 @@ async function checkWeather(city, latitude, longitude) {
 checkWeather('Yogyakarta');
 
 // Get user's current weather
-function getUserCoordinates() {
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-      const reverseGeocodongUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
+async function getUserCoordinates() {
+  try {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+    const { latitude, longitude } = position.coords;
+    const reverseGeocodingUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
 
-      fetch(reverseGeocodongUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          const { name } = data[0];
-          checkWeather(name, latitude, longitude);
-          forecastItemCont.innerHTML = '';
-        })
-        .catch(() => {
-          alert('An error occured while fetching the city!');
-        });
-    },
-    (error) => {
-      if (error.code === error.PERMISSION_DENIED) {
-        alert(
-          'Geolocation request denied. Please reset location permission to grant access again.'
-        );
+    const response = await fetch(reverseGeocodingUrl);
+    if (!response.ok) {
+      throw new Error('Failed to fetch city');
+    }
+    const data = await response.json();
+    const { name } = data[0];
+    checkWeather(name, latitude, longitude);
+    forecastItemCont.innerHTML = '';
+  } catch (error) {
+    if (error.code === error.PERMISSION_DENIED) {
+      alert(
+        'Geolocation request denied. Please reset location permission to grant access again.'
+      );
+    } else {
+      alert('An error occurred while fetching the city!');
+
+      if (lastValidCity) {
+        await checkWeather(lastValidCity);
       }
     }
-  );
+  }
 }
 
 // Show weather using getUserCoordinate()
