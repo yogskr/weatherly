@@ -1,10 +1,11 @@
 import { weatherIconCont } from './components/iconResources.js';
+import weatherApiKey from './components/apiKey.js';
 
 // Five Day Forecast DOM Elements
 const forecastItemCont = document.querySelector('.forecast-item-container');
 
 // Fetch 5 Days Forecast
-const API_KEY = process.env.weatherApiKey;
+const API_KEY = weatherApiKey.key;
 const API_URL = `https://api.openweathermap.org/data/2.5/forecast?units=metric`;
 
 // Store the last valid city

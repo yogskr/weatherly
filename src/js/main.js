@@ -2,6 +2,7 @@
 
 import fiveDayForecast from './fiveDayForecast.js';
 import resources from './components/iconResources.js';
+import weatherApiKey from './components/apiKey.js';
 
 // -------------------------------------------------
 
@@ -102,7 +103,7 @@ const forecastItemCont = querySelector('.forecast-item-container');
 // -------------------------------------------------
 
 // Get Current Weather
-const API_KEY = process.env.weatherApiKey;
+const API_KEY = weatherApiKey.key;
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 
 async function checkWeather(city, latitude, longitude) {
