@@ -53,8 +53,6 @@
 }
 
 html {
-  display: flex;
-  align-items: center;
   scroll-behavior: smooth;
 }
 
@@ -374,6 +372,7 @@ main {
   position: fixed;
   z-index: 2;
   height: 4.5rem;
+  top: 10rem;
   width: auto;
   border-radius: var(--main-border-radius);
   display: flex;
@@ -397,7 +396,7 @@ main {
 }
 
 .msg-active {
-  transform: translateY(-20rem);
+  transform: translateY(-5rem);
 }
 
 .warning-image {
@@ -675,10 +674,10 @@ form {
   text-align: center;
   padding-top: 15px;
   font-size: 13px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.copyright p {
+.copyright > p {
   margin-bottom: 5px;
 }
 
@@ -686,12 +685,42 @@ form {
   font-weight: 600;
 }
 
+.report-bug {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background-color: rgba(240, 180, 74, 0.667);
+  width: fit-content;
+  padding: 5px 8px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 10px;
+  color: inherit;
+}
+
+.report-bug:hover {
+  cursor: pointer;
+  transform: var(--item-transform-hover);
+  box-shadow: var(--item-box-shadow);
+  transition: var(--active-transition);
+}
+
+.report-bug-text {
+  margin: 0;
+}
+
+.report-bug-image {
+  width: 0.8rem;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1024px) {
   header,
   .weather-container,
   .five-day-forecast,
-  .footer-container {
+  .footer-container,
+  .copyright {
     width: 60rem;
   }
 
@@ -908,7 +937,6 @@ form {
 
   /* Warning & Error Messages Styling */
   .msg {
-    position: fixed;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -931,7 +959,7 @@ form {
   }
 
   .msg-active {
-    transform: translateY(-50rem);
+    transform: translateY(50%);
   }
 
   .forecast-item-container {
@@ -1003,7 +1031,7 @@ form {
   }
 
   .msg-active {
-    transform: translateY(-70rem);
+    transform: translateY(50%);
   }
 
   .heading-container,
