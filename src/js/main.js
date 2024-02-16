@@ -343,6 +343,9 @@ async function checkWeather(city, latitude, longitude) {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
     };
     const longFormatDate = unixDate.toLocaleDateString(locale, options);
 
