@@ -1,6 +1,6 @@
 // Public Open Weather API Key (free to use)
 const weatherApiKey = {
-  key: 'bd5e378503939ddaee76f12ad7a97608',
+  key: 'a6efd444d5287faaebffb105784f5590',
 };
 
 export default weatherApiKey;
